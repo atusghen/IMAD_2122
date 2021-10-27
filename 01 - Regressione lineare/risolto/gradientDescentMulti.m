@@ -17,13 +17,26 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+%{ 
+my solution iterative
+for i=1:w
+    theta(i)= theta(i)+(2*alpha/N)*X(:,i)'*(y-X*theta);
+end
 
-gradient=-2/N*X'*(y-X*theta);
+my solution non iterative
+theta0= theta(1)-(2*alpha/N)*sum((y-X*theta).*(-X(:,1)));
+    theta1= theta(2)-(2*alpha/N)*sum((y-X*theta).*(-X(:,2)));
+    theta2= theta(3)-(2*alpha/N)*sum((y-X*theta).*(-X(:,3)));
+    theta=[theta0; theta1; theta2];
+%}
+%prof solution
+gradient=- 2/N *X' * (y-X*theta);
 theta=theta-gradient*alpha;
+
     % ============================================================
     % Save the cost J in every iteration    
     
-    J_history = computeCostMulti(X, y, theta);
+    J_history(iter) = computeCostMulti(X, y, theta);
 end
 
 end
