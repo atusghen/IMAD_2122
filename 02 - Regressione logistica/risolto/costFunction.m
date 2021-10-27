@@ -21,9 +21,9 @@ grad = zeros(size(theta));
 %
 
 h = sigmoid(X*theta);   %%slide 18, h=phi=s(a)
-J = ((-y)'*log(h)-(1-y)'*log(1-h))/N; %slide 21 %
+J = ((-y)'*log(h)-(1-y)'*log(1-h)); %slide 21 %
 
-grad = (X'*(h - y))/N; %slide 27
+grad = (X'*(h - y)); %slide 27
  
 % =============================================================
 

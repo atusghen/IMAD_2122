@@ -18,20 +18,8 @@ for iter = 1:num_iters
     %
 
 
-for i=1:w
-    theta(i)= theta(i)+(2*alpha/N)*X(:,i)'*(y-X*theta);
-end
-
- %{
-for i=1:w
-    theta(i)= theta(i)-(2*alpha/N)*sum((y-X*theta).*(-X(:,i)));
-end
-
-    theta0= theta(1)-(2*alpha/N)*sum((y-X*theta).*(-X(:,1)));
-    theta1= theta(2)-(2*alpha/N)*sum((y-X*theta).*(-X(:,2)));
-    theta2= theta(3)-(2*alpha/N)*sum((y-X*theta).*(-X(:,3)));
-    theta=[theta0; theta1; theta2];
-%}
+gradient=-2/N*X'*(y-X*theta);
+theta=theta-gradient*alpha;
     % ============================================================
     % Save the cost J in every iteration    
     
